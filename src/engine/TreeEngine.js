@@ -44,11 +44,14 @@ export class TreeEngine {
     const startX = this.width / 2;
     const startY = this.groundY;
     
+    // Base scale on the smaller dimension to prevent clipping on mobile portrait
+    const baseScale = Math.min(this.width, this.height);
+    
     // 1 Main Root growing down
-    this.mainRoot = this.createBranch(startX, startY, Math.PI / 2, this.height * 0.12, 14, 0, 4, true, 4);
+    this.mainRoot = this.createBranch(startX, startY, Math.PI / 2, baseScale * 0.15, 14, 0, 4, true, 4);
 
     // 1 Main Trunk growing up
-    this.trunk = this.createBranch(startX, startY, -Math.PI / 2, this.height * 0.22, 18, 0, 6, false, 4);
+    this.trunk = this.createBranch(startX, startY, -Math.PI / 2, baseScale * 0.28, 18, 0, 6, false, 4);
     
     // Map the 8 words (Stages 5 to 12) to 8 major branch clusters in the canopy
     let leafClusters = [];
