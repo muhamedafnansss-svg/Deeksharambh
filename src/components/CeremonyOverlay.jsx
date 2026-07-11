@@ -92,13 +92,13 @@ export default function CeremonyOverlay() {
 
   // Words follow a strict left-to-right arc. Mobile gets a tighter, taller arc to fit the portrait screen.
   const WORD_POSITIONS = isMobile ? [
-    { top: "60%", left: "15%", whiteSpace: "nowrap" },  // 1. Wisdom
-    { top: "45%", left: "22%", whiteSpace: "nowrap" }, // 2. Discovery
-    { top: "30%", left: "35%", whiteSpace: "nowrap" }, // 3. Innovation & Technology
-    { top: "18%", left: "50%", whiteSpace: "nowrap" },  // 4. Excellence (Apex)
-    { top: "30%", left: "65%", whiteSpace: "nowrap" }, // 5. Sustainability
-    { top: "45%", left: "78%", whiteSpace: "nowrap" }, // 6. Harmony
-    { top: "60%", left: "85%", whiteSpace: "nowrap" }, // 7. Justice
+    { top: "65%", left: "15%", whiteSpace: "nowrap" },  // 1. Wisdom
+    { top: "52%", left: "22%", whiteSpace: "nowrap" }, // 2. Discovery
+    { top: "42%", left: "35%", whiteSpace: "nowrap" }, // 3. Innovation & Technology
+    { top: "32%", left: "50%", whiteSpace: "nowrap" },  // 4. Excellence (Apex)
+    { top: "42%", left: "65%", whiteSpace: "nowrap" }, // 5. Sustainability
+    { top: "52%", left: "78%", whiteSpace: "nowrap" }, // 6. Harmony
+    { top: "65%", left: "85%", whiteSpace: "nowrap" }, // 7. Justice
   ] : [
     { top: "60%", left: "8%", whiteSpace: "nowrap" },  
     { top: "35%", left: "20%", whiteSpace: "nowrap" }, 
