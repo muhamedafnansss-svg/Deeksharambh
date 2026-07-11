@@ -44,14 +44,16 @@ export class TreeEngine {
     const startX = this.width / 2;
     const startY = this.groundY;
     
-    // Base scale on the smaller dimension to prevent clipping on mobile portrait
-    const baseScale = Math.min(this.width, this.height);
+    // Scale based strictly on width for mobile (portrait), height for desktop (landscape)
+    const isMobile = this.width < this.height;
+    const trunkLength = isMobile ? this.width * 0.22 : this.height * 0.22;
+    const rootLength = isMobile ? this.width * 0.12 : this.height * 0.12;
     
     // 1 Main Root growing down
-    this.mainRoot = this.createBranch(startX, startY, Math.PI / 2, baseScale * 0.15, 14, 0, 4, true, 4);
+    this.mainRoot = this.createBranch(startX, startY, Math.PI / 2, rootLength, 14, 0, 4, true, 4);
 
     // 1 Main Trunk growing up
-    this.trunk = this.createBranch(startX, startY, -Math.PI / 2, baseScale * 0.28, 18, 0, 6, false, 4);
+    this.trunk = this.createBranch(startX, startY, -Math.PI / 2, trunkLength, 18, 0, 6, false, 4);
     
     // Map the 8 words (Stages 5 to 12) to 8 major branch clusters in the canopy
     let leafClusters = [];
@@ -105,9 +107,14 @@ export class TreeEngine {
       delay: depth * 0.5 + Math.random() * 0.2 // Procedural growth staggering
     };
 
-    // Attach Leaves
-    if (!isRoot && depth >= maxDepth - 2) {
-      const numLeaves = depth === maxDepth ? 8 : 4;
+    // Attach Leaves - Increased density for a much fuller canopy
+    if (!isRoot && depth >= maxDepth - 3) {
+      let numLeaves = 0;
+      if (depth === maxDepth) numLeaves = 15;
+      else if (depth === maxDepth - 1) numLeaves = 10;
+      else if (depth === maxDepth - 2) numLeaves = 6;
+      else numLeaves = 3;
+
       for (let i = 0; i < numLeaves; i++) {
         branch.leaves.push({
           x: endX + (Math.random() - 0.5) * 60 * this.dpr,

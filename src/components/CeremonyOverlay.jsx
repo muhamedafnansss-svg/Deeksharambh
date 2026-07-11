@@ -72,10 +72,12 @@ export default function CeremonyOverlay() {
     
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('mousedown', handleAdvance);
+    window.addEventListener('touchstart', handleAdvance);
     
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('mousedown', handleAdvance);
+      window.removeEventListener('touchstart', handleAdvance);
     };
   }, [currentStage, canClick, nextStage]);
 
