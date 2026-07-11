@@ -21,6 +21,15 @@ export default function CeremonyOverlay() {
   // Loading dots state
   const [dots, setDots] = useState("");
 
+  // Mobile layout detection
+  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth < 768 : false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   // Animate loading dots during initialization
   useEffect(() => {
     if (currentStage === 0) {
@@ -81,15 +90,23 @@ export default function CeremonyOverlay() {
     };
   }, [currentStage, canClick, nextStage]);
 
-  // Words follow a strict left-to-right arc with Excellence positioned as the absolute apex of the tree
-  const WORD_POSITIONS = [
-    { top: "60%", left: "8%", maxWidth: "15vw", whiteSpace: "normal" },  // 1. Wisdom
-    { top: "35%", left: "20%", maxWidth: "15vw", whiteSpace: "normal" }, // 2. Discovery
-    { top: "18%", left: "33%", maxWidth: "18vw", whiteSpace: "normal" }, // 3. Innovation & Technology
-    { top: "5%", left: "50%", maxWidth: "15vw", whiteSpace: "normal" },  // 4. Excellence (Apex - Top of the tree)
-    { top: "18%", left: "67%", maxWidth: "18vw", whiteSpace: "normal" }, // 5. Sustainability
-    { top: "35%", left: "80%", maxWidth: "15vw", whiteSpace: "normal" }, // 6. Harmony
-    { top: "55%", left: "88%", maxWidth: "12vw", whiteSpace: "normal" }, // 7. Justice
+  // Words follow a strict left-to-right arc. Mobile gets a tighter, taller arc to fit the portrait screen.
+  const WORD_POSITIONS = isMobile ? [
+    { top: "60%", left: "15%", whiteSpace: "nowrap" },  // 1. Wisdom
+    { top: "45%", left: "22%", whiteSpace: "nowrap" }, // 2. Discovery
+    { top: "30%", left: "35%", whiteSpace: "nowrap" }, // 3. Innovation & Technology
+    { top: "18%", left: "50%", whiteSpace: "nowrap" },  // 4. Excellence (Apex)
+    { top: "30%", left: "65%", whiteSpace: "nowrap" }, // 5. Sustainability
+    { top: "45%", left: "78%", whiteSpace: "nowrap" }, // 6. Harmony
+    { top: "60%", left: "85%", whiteSpace: "nowrap" }, // 7. Justice
+  ] : [
+    { top: "60%", left: "8%", whiteSpace: "nowrap" },  
+    { top: "35%", left: "20%", whiteSpace: "nowrap" }, 
+    { top: "18%", left: "33%", whiteSpace: "nowrap" }, 
+    { top: "5%", left: "50%", whiteSpace: "nowrap" },  
+    { top: "18%", left: "67%", whiteSpace: "nowrap" }, 
+    { top: "35%", left: "80%", whiteSpace: "nowrap" }, 
+    { top: "55%", left: "88%", whiteSpace: "nowrap" }, 
   ];
 
   return (
@@ -158,7 +175,7 @@ export default function CeremonyOverlay() {
                 animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
                 exit={{ opacity: 0, scale: 1.2, filter: 'blur(15px)' }}
                 transition={{ duration: currentStage >= 12 ? 0.3 : 1.5, ease: "easeOut" }}
-                className="absolute -translate-x-1/2 -translate-y-1/2 text-center text-gold-glow text-base sm:text-xl md:text-2xl lg:text-3xl font-values font-bold tracking-widest drop-shadow-[0_0_20px_rgba(243,198,35,1)] leading-snug"
+                className="absolute -translate-x-1/2 -translate-y-1/2 text-center text-gold-glow text-[10px] sm:text-base md:text-2xl lg:text-3xl font-values font-bold tracking-widest drop-shadow-[0_0_20px_rgba(243,198,35,1)] leading-snug"
                 style={WORD_POSITIONS[index]}
               >
                 {word}
