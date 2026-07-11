@@ -156,7 +156,7 @@ export default function CeremonyOverlay() {
                 animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
                 exit={{ opacity: 0, scale: 1.2, filter: 'blur(15px)' }}
                 transition={{ duration: currentStage >= 12 ? 0.3 : 1.5, ease: "easeOut" }}
-                className="absolute -translate-x-1/2 -translate-y-1/2 text-center text-gold-glow text-xl md:text-2xl lg:text-3xl font-values font-bold tracking-widest drop-shadow-[0_0_20px_rgba(243,198,35,1)] leading-snug"
+                className="absolute -translate-x-1/2 -translate-y-1/2 text-center text-gold-glow text-base sm:text-xl md:text-2xl lg:text-3xl font-values font-bold tracking-widest drop-shadow-[0_0_20px_rgba(243,198,35,1)] leading-snug"
                 style={WORD_POSITIONS[index]}
               >
                 {word}
@@ -174,25 +174,25 @@ export default function CeremonyOverlay() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, ease: "easeOut", delay: 0.5 }}
-              className="absolute top-10 left-10 flex items-center gap-[18px] z-20"
+              className="absolute top-4 left-4 md:top-10 md:left-10 flex items-center gap-3 md:gap-[18px] z-20"
             >
               <img
                 src="/pure_crest_transparent.png"
                 alt="Institute Logo"
-                className="w-[78px] h-auto"
+                className="w-[50px] md:w-[78px] h-auto"
                 style={{
                   filter: 'drop-shadow(0 0 12px rgba(255,255,255,0.2))'
                 }}
               />
               <div className="flex flex-col">
                 <h3 
-                  className="text-[#F5EFE4] text-[30px] font-bold m-0 leading-none"
-                  style={{ letterSpacing: '3px', fontFamily: '"Cinzel", "Cormorant Garamond", serif' }}
+                  className="text-[#F5EFE4] text-[18px] md:text-[30px] font-bold m-0 leading-none"
+                  style={{ letterSpacing: '2px', fontFamily: '"Cinzel", "Cormorant Garamond", serif' }}
                 >
                   YENEPOYA
                 </h3>
                 <p 
-                  className="text-[13px] leading-[1.45] text-white/80 mt-2"
+                  className="text-[10px] md:text-[13px] leading-[1.3] md:leading-[1.45] text-white/80 mt-1 md:mt-2"
                   style={{ fontFamily: '"Poppins", sans-serif' }}
                 >
                   Institute of Arts,<br />
@@ -206,16 +206,16 @@ export default function CeremonyOverlay() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 4, ease: "easeOut" }}
-              className="absolute top-[8%] flex flex-col items-center w-full px-4"
+              className="absolute top-[20%] md:top-[8%] flex flex-col items-center w-full px-4"
             >
-              <h1 className="text-ivory-warm text-5xl md:text-7xl lg:text-8xl font-title font-bold tracking-tight drop-shadow-[0_0_50px_rgba(212,175,55,1)] text-center">
+              <h1 className="text-ivory-warm text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-title font-bold tracking-tight drop-shadow-[0_0_50px_rgba(212,175,55,1)] text-center">
                 DEEKSHARAMBHA
               </h1>
               <motion.div
                 initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 transition={{ delay: 1, duration: 2, ease: "easeOut" }}
-                className="text-white text-5xl md:text-7xl lg:text-8xl font-title font-bold tracking-widest drop-shadow-[0_0_50px_rgba(255,255,255,0.8)] mt-2"
+                className="text-white text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-title font-bold tracking-widest drop-shadow-[0_0_50px_rgba(255,255,255,0.8)] mt-2"
               >
                 2026
               </motion.div>
@@ -223,7 +223,7 @@ export default function CeremonyOverlay() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 2, duration: 3 }}
-                className="text-ivory-warm/90 text-xl md:text-3xl font-subtitle italic mt-6 tracking-widest drop-shadow-lg"
+                className="text-ivory-warm/90 text-sm sm:text-xl md:text-3xl font-subtitle italic mt-4 md:mt-6 tracking-widest drop-shadow-lg text-center"
               >
                 A New Chapter Begins
               </motion.p>
